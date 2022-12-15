@@ -1,0 +1,45 @@
+<div>
+  <h1>Make your order</h1>
+  <div>
+    <div class="card m-auto">
+    <div class="card-header">
+      <h3>Product List</h3>
+    </div>
+    <div class="card-body">
+      <app-product-list
+      (numberOfProducts) = onNumberOfProductsAdded($event)
+      >
+      </app-product-list>
+            <form [formGroup]="addOrderForm" (ngSubmit)="onSubmit()">
+              <div class="form-group col-12" style="margin-top:40px">
+                <label for="name" class="form-label">Home address</label>
+                <input type="text" class="form-control" formControlName="homeAddress">
+                <span *ngIf="!homeAddress.valid && (homeAddress.touched || orderSubmitted)"
+                class="error-block">
+                  Please provide home address
+                </span>
+            </div>
+
+            <div class="form-group col-12">
+              <label for="name" class="form-label">Comment </label>
+              <input type="text" class="form-control" formControlName="comment">
+              <span *ngIf="!comment.valid && (comment.touched || orderSubmitted)"
+              class="error-block">
+                Please provide comment
+              </span>
+          </div>
+
+
+              <div class="form-group col-12 mb-2" style="margin-top:10px;" style="display:flex">
+                <span><button type="submit" class="btn btn-primary">Order</button></span>
+                <i>- or -</i>
+                <div id="paypal-checkout-btn">
+                </div>
+                <span class="p-2"><button type="reset" class="btn btn-secondary">Cancel</button></span>
+              </div>
+            </form>
+</div>
+
+  </div>
+  </div>
+</div>

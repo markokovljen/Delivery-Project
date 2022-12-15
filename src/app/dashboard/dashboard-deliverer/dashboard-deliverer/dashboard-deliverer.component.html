@@ -1,0 +1,47 @@
+
+<h1>Orders list</h1>
+
+<app-map style="margin: 20px;" [onTakeOrder]="onTakeOrder"></app-map>
+
+<div *ngFor="let order of orderPendingItemsDeliverer$ | async">
+<div class="card">
+  <h1 class="mb-0"> Order </h1>
+  <hr class="mt-2 mb-2">
+  <div class="card-img-wrapper" style="width: 300px;">
+    <img  class="card-img-top" src="assets/images/deliver.jpg" >
+  </div>
+  <div class="card-body p-1">
+    <hr class="mt-2 mb-2">
+    <h6  class="mt-2">Home Address : {{order.homeAddress}}
+    </h6>
+    <h6  class="mt-2">Comment : {{order.comment}}
+    </h6>
+    <h6  class="mt-2">Order price : {{order.orderPrice}}
+    </h6>
+    <h3 class="mb-0"> Products: </h3>
+    <div *ngFor="let product of order.products">
+      <div class="card">
+        <div class="card-body p-1">
+          <hr class="mt-2 mb-2">
+          <h6  class="mt-2">Product name : {{product.name}}
+          </h6>
+          <h6  class="mt-2">Ingredient : {{product.ingredient}}
+          </h6>
+          <h6  class="mt-2">Quantity : {{product.quantity}}
+          </h6>
+          <div>
+
+        </div>
+      </div>
+
+    </div>
+    <hr class="mt-2 mb-2">
+  </div>
+  <div class="btn-group d-flex" style="margin-top: 10px">
+    <button type="button" (click)="onTakeOrder(order.id)" class="btn btn-primary">Take order</button>
+  </div>
+  <br/>
+  <br/>
+</div>
+</div>
+

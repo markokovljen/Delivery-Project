@@ -1,0 +1,114 @@
+<div class="row">
+  <div class="col-7 m-auto">
+  <div class="card m-auto">
+    <div class="card-header">
+      <h3 *ngIf="!isAdministrator()">Register</h3>
+      <h3 *ngIf="isAdministrator()">Add User</h3>
+    </div>
+    <div class="card-body">
+      <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+        <div class="form-group col-12">
+          <label for="userName" class="form-label">Username</label>
+          <input type="text" class="form-control" formControlName="userName">
+          <span *ngIf="!userName.valid && (userName.touched || userSubmitted)"
+          class="error-block">
+            Please provide user name
+          </span>
+      </div>
+        <div class="form-group col-12">
+          <label for="name" class="form-label">First name</label>
+          <input type="text" class="form-control" formControlName="firstName">
+          <span *ngIf="!firstName.valid && (firstName.touched || userSubmitted)"
+          class="error-block">
+            Please provide first name
+          </span>
+      </div>
+
+      <div class="form-group col-12">
+        <label for="name" class="form-label">Last name</label>
+        <input type="text" class="form-control" formControlName="lastName">
+        <span *ngIf="!lastName.valid && (lastName.touched || userSubmitted)"
+        class="error-block">
+          Please provide last name
+        </span>
+    </div>
+
+        <div class="form-group col-12">
+          <label for="email" class="form-label">Email</label>
+          <input type="text" class="form-control" formControlName="email">
+          <span *ngIf="!email.valid && (email.touched || userSubmitted)" class="error-block">
+            <span *ngIf="email.hasError('required')">
+              Please provide email
+            </span>
+            <span *ngIf="email.hasError('email')">
+              Please provide valid email id
+            </span>
+          </span>
+        </div>
+
+        <div class="form-group col-12">
+          <label for="passwrod" class="form-label" >Password</label>
+          <input type="password" class="form-control" formControlName="password">
+          <span *ngIf="!password.valid && (password.touched || userSubmitted)" class="error-block">
+            <span *ngIf="password.errors!['required']">
+              Please provide password
+            </span>
+            <span *ngIf="password.errors!.minlength">
+              Password should not be lesser than 8 character
+            </span>
+          </span>
+        </div>
+
+        <div class="form-group col-12">
+          <label for="cpassword" class="form-label" >Confirm Password</label>
+          <input type="password" class="form-control" formControlName="confirmPassword">
+          <span *ngIf="!confirmPassword.valid && (confirmPassword.touched || userSubmitted)" class="error-block">
+            <span *ngIf="confirmPassword.errors!['required']">
+              Please confirm password
+            </span>
+          </span>
+          <span *ngIf="registrationForm.hasError('notSame') && confirmPassword.valid" class="error-block">
+            Password not match
+          </span>
+        </div>
+
+        <div class="form-group col-12 mb-2">
+          <label for="address" class="form-label" >Address</label>
+          <input type="text" class="form-control" formControlName="address">
+          <span *ngIf="!address.valid && (address.touched || userSubmitted)" class="error-block">
+            <span *ngIf="address.errors!['required']">
+              Please provide address
+            </span>
+          </span>
+        </div>
+
+        <div class="form-group col-12">
+          <label for="dateOfBirth" class="form-label">Date of birth</label>
+          <input type="date" class="form-control" formControlName="dateOfBirth">
+          <span *ngIf="!dateOfBirth.valid && (dateOfBirth.touched || userSubmitted)"
+          class="error-block">
+            Please provide date of birth
+          </span>
+      </div>
+
+      <div class="form-group col-12" style="margin-top:10px">
+        <span style="margin-right:20px"><label for="users">Choose a user:</label></span>
+
+          <select id="users" formControlName="role">
+            <option value="user">User</option>
+            <option value="administrator">Administrator</option>
+          <option value="deliverer">Deliverer</option>
+          </select>
+      </div>
+        <div class="form-group col-12 mb-2" style="margin-top:10px;">
+          <span><button type="submit" class="btn btn-primary">Save</button></span>
+          <span class="p-2"><button type="reset" class="btn btn-secondary">Cancel</button></span>
+        </div>
+        <!-- Form Values: {{registrationForm.value | json }} <br/>
+        Form Status: {{registrationForm.valid}}  fina praksa da ti odma ispisuje da li redi sve kako treba-->
+
+      </form>
+    </div>
+  </div>
+  </div>
+</div>

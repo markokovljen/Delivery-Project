@@ -1,0 +1,42 @@
+<div class="card">
+  <div class="card-img-wrapper">
+    <img  class="card-img-top" src="assets/images/coek.jpg">
+    <!-- <img *ngIf="article.photo" class="card-img-top" src="{{this.article.photo.imageUrl}}"> -->
+
+     <!-- <ul *ngIf="!hideIcons"  class="list-inline text-center member-icons animate">
+      <li class="list-inline-item">
+        <button class="btn btn-info" routerLink="/article-detail/{{article.id}}"><i class="far fa-edit"></i></button>
+      </li>
+    </ul> -->
+  </div>
+  <div class="card-body p-1">
+    <hr class="mt-2 mb-2">
+    <h1 class="mb-0"> {{registrationRequest.userName}} </h1>
+    <h6  class="mt-2">Full name : {{registrationRequest.firstName}} {{registrationRequest.lastName}}
+    </h6>
+    <h6  class="mt-2">Email : {{registrationRequest.email}}
+    </h6>
+    <h6  class="mt-2">Address : {{registrationRequest.address}}
+    </h6>
+    <h6  class="mt-2">Date of birth : {{registrationRequest.dateOfBirth}}
+    </h6>
+    <div *ngIf ="registrationRequest.role == 'user'">
+      This user is sending registration request
+    </div>
+    <div *ngIf ="registrationRequest.role == 'deliverer'">
+      This user is sending verification request
+    </div>
+    <div *ngIf ="registrationRequest.role == 'administrator'">
+      This user is sending admin request
+    </div>
+    <hr class="mt-2 mb-2">
+    <div class="btn-group d-flex" style="margin-top: 10px">
+      <button type="button" (click)="onApprove()" class="btn btn-primary">Approve</button>
+      <button type="button" (click)="onReject()" class="btn btn-danger">Reject</button>
+  </div>
+
+
+    <hr class="mt-2 mb-2">
+
+  </div>
+</div>

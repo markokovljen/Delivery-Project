@@ -1,0 +1,47 @@
+<div class="row">
+  <div class="col-6 m-auto">
+    <div class="card m-auto" style="margin-bottom: 70px !important;">
+    <div class="card-header">
+      <h3>Add Product</h3>
+    </div>
+    <div class="card-body">
+      <form #addForm='ngForm' (ngSubmit)="onAdd(addForm)">
+        <div class="form-group col-12">
+          <label>Name of product</label>
+          <input class="form-control" required ngModel name="name">
+        </div>
+
+        <div class="form-group col-12 pb-3">
+          <label>Price</label>
+          <input type="number" class="form-control" required ngModel name="price">
+        </div>
+
+        <div class="form-group col-12 pb-3">
+          <label>Ingredient</label>
+          <input type="text" class="form-control" required ngModel name="ingredient">
+        </div>
+
+        <div class="form-group col-12">
+          <span><button [disabled]="!addForm.valid" type="submit" class="btn btn-primary pl-2">Add product</button></span>
+          <span class="p-2"><button type="button" class="btn btn-secondary ml-2">Cancel</button></span>
+        </div>
+      </form>
+
+    </div>
+  </div>
+  </div>
+</div>
+
+
+<div>
+  <div>
+    <div class="card m-auto">
+    <div class="card-header">
+      <h3>Product List</h3>
+    </div>
+    <div class="card-body">
+      <app-product-list></app-product-list>
+    </div>
+  </div>
+  </div>
+</div>

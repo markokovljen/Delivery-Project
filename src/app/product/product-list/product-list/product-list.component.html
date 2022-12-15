@@ -1,0 +1,11 @@
+<div class="row">
+  <div>
+    <div *ngFor="let product of productList$ | async"
+    class="shadow-lg col-sm-4 p-3">
+    <app-product-card
+    [product]="product"
+    (numberOfProducts) = onNumberOfProductsAdded($event)
+    ></app-product-card>
+    </div>
+  </div>
+</div>

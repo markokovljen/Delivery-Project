@@ -1,0 +1,20 @@
+<div class="card">
+  <div class="card-body p-1">
+    <hr class="mt-2 mb-2">
+    <h1 class="mb-0"> {{product.name}} </h1>
+    <h6  class="mt-2">Price : {{product.price}}
+    </h6>
+    <h6  class="mt-2">Ingridient: {{product.ingredient}}
+    </h6>
+    <hr class="mt-2 mb-2">
+    <div *ngIf ="role == 'user'">
+    <div class="form-group col-12 pb-3">
+      <label> Number of {{product.name}}s which you want to order</label>
+      <input type="number" class="form-control" id= "numberOfP" required ngModel name="numberOfP" [(ngModel)]="numberOfP">
+    </div>
+    <div class="form-group col-12">
+      <button class="btn btn-success" (click)="onAddProduct()">Add product</button>
+    </div>
+  </div>
+  </div>
+</div>

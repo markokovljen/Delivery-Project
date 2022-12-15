@@ -1,0 +1,78 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+  <div class="container-fluid">
+    <!-- <a class="navbar-brand" href="{{dashboardLink}}">WEB 2 PROJECT</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button> -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <!-- <li class="nav-item">
+          <a class="nav-link" [routerLinkActiveOptions]="{exact:true}" routerLinkActive="active" routerLink="/">Dashboard</a>
+        </li> -->
+        <li  class="nav-item" *ngIf="loggedin()">
+          <a class="nav-link"
+          routerLink="{{dashboardLink}}"
+          routerLinkActive="active"
+          >Dashboard</a>
+        </li>
+        <li class="nav-item" *ngIf="loggedin()">
+          <a class="nav-link" routerLinkActive="active" routerLink="/modify-profile/{{loggedinUser}}">Modify Profile</a>
+        </li>
+
+        <li  *ngIf="loggedin() && isAdministrator()" class="nav-item">
+          <a class="nav-link"
+          routerLink="user/request-list"
+          routerLinkActive="active"
+          >Register list request</a>
+        </li>
+        <li  *ngIf="loggedin() && isAdministrator()" class="nav-item">
+          <a class="nav-link"
+          routerLink="dashboard/admin/currentorders"
+          routerLinkActive="active"
+          >All orders</a>
+        </li>
+        <li  *ngIf="loggedin() && isDeliverer()" class="nav-item">
+          <a class="nav-link"
+          routerLink="dashboard/deliverer/currentorders"
+          routerLinkActive="active"
+          >Current/History orders</a>
+        </li>
+        <li  *ngIf="loggedin() &&  isUser()" class="nav-item">
+          <a class="nav-link"
+          routerLink="dashboard/user/currentorders"
+          routerLinkActive="active"
+          >Current/History orders</a>
+        </li>
+      </ul>
+      <div>
+        <ul class="nav navbar-nav">
+            <li  *ngIf="!loggedin()" class="nav-item">
+              <a class="nav-link"
+              routerLink="user/register"
+              routerLinkActive="active"
+              >Register</a>
+            </li>
+            <li *ngIf="!loggedin()" class="nav-item">
+              <a class="nav-link"
+              routerLink="user/login"
+              routerLinkActive="active"
+              >Login</a>
+            </li>
+            <div *ngIf="loggedin()" class="dropdown px-4" dropdown>
+              <a href="#" class="dropdown-toggle text-light" dropdownToggle (click)="false">
+                  Welcome {{loggedinUser}}
+              </a>
+              <div *dropdownMenu class="dropdown-menu">
+                  <a routerLink="{{dashboardLink}}"class="dropdown-item">
+                    <i class="fas fa-tachometer-alt"></i> View Dashboard</a>
+                  <a routerLink="/modify-profile/{{loggedinUser}}" class="dropdown-item">
+                    <i class="far fa-user-circle"></i> Modify Profile</a>
+                  <a (click)='onLogout()' class="dropdown-item">
+                    <i class="fas fa-sign-out-alt"></i> Logout</a>
+              </div>
+            </div>
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>

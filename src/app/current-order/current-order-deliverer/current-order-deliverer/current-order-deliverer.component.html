@@ -1,0 +1,46 @@
+
+  <h1>Current orders list</h1>
+  <div *ngFor="let order of orderItemsDeliverer$ | async">
+  <div class="card">
+    <h1 class="mb-0"> Order </h1>
+    <hr class="mt-2 mb-2">
+    <div class="card-img-wrapper" style="width: 300px;">
+      <img  class="card-img-top" src="assets/images/fooddelivery.jpg" >
+    </div>
+    <div class="card-body p-1">
+      <hr class="mt-2 mb-2">
+      <ng-container *ngIf="order.deliveryTime2 == 0">
+        <h2 class="mt-2">The order has been finished</h2>
+      </ng-container>
+      <ng-container *ngIf="order.deliveryTime2 != 0">
+        <h2 class="mt-2">Delivery time : {{order.deliveryTime2}} minutes</h2>
+      </ng-container>
+      <h6  class="mt-2">Home Address : {{order.homeAddress}}
+      </h6>
+      <h6  class="mt-2">Comment : {{order.comment}}
+      </h6>
+      <h6  class="mt-2">Order price : {{order.orderPrice}}
+      </h6>
+      <h3 class="mb-0"> Products: </h3>
+      <div *ngFor="let product of order.products">
+        <div class="card">
+          <div class="card-body p-1">
+            <hr class="mt-2 mb-2">
+            <h6  class="mt-2">Product name : {{product.name}}
+            </h6>
+            <h6  class="mt-2">Ingredient : {{product.ingredient}}
+            </h6>
+            <h6  class="mt-2">Quantity : {{product.quantity}}
+            </h6>
+            <div>
+
+          </div>
+        </div>
+
+      </div>
+      <hr class="mt-2 mb-2">
+    </div>
+    <br/>
+    <br/>
+  </div>
+  </div>
